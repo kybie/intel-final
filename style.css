@@ -218,6 +218,11 @@ section {
   position: relative;
 }
 
+.timeline-hint {
+  margin: 0;
+  padding: 0;
+}
+
 /* ===== CHECK-IN SECTION ===== */
 .checkin-section {
   padding: 14px 10px 2px;
@@ -259,7 +264,7 @@ section {
 .simple-list {
   list-style: none;
   padding: 0;
-  margin: 0 0 12px;
+  margin: 0;
   max-height: 260px;
   overflow-y: auto;
   border: 1px solid #e6eef7;
@@ -545,6 +550,17 @@ section > div:hover {
   border-top-color: #00c7fd;
 }
 
+section.features-section > div,
+section.features-section > div:hover,
+section.attendee-section > div,
+section.attendee-section > div:hover {
+  transform: none;
+  box-shadow: none;
+  border-inline-start-color: transparent;
+  border-top-color: transparent;
+  transition: none;
+}
+
 /* Card text - Year */
 section > div h2 {
   font-size: 2.5em;
@@ -754,13 +770,29 @@ section[aria-label="Intel Sustainability Timeline"] .flip-card-back p {
 /* ===== FEATURES SECTION ===== */
 .features-section {
   background: linear-gradient(135deg, #f0f4f8 0%, #e8f1f7 100%);
-  padding: 20px 10px;
-  margin: 10px 0;
+  padding: 8px 6px;
+  margin: 6px 0;
+}
+
+.features-section,
+.attendee-section {
+  position: static;
+  transform: none;
+  transition: none;
+  animation: none;
+}
+
+.features-section > div,
+.features-section > div:hover,
+.attendee-section > div,
+.attendee-section > div:hover {
+  transform: none;
+  transition: none;
 }
 
 .attendee-section {
-  padding: 12px 8px;
-  margin: 4px 0;
+  padding: 8px 6px;
+  margin: 6px 0;
 }
 
 .attendee-section .container {
@@ -1095,7 +1127,7 @@ body > p {
   header p { font-size: 1.3em; }
   
   /* Desktop features section */
-  .features-section { padding: 40px 16px; margin: 20px 0; }
+  .features-section { padding: 8px 6px; margin: 6px 0; }
   .features-header { margin-bottom: 22px; }
   .features-section h2 { font-size: 2em; margin-bottom: 10px; }
   .features-subtitle { font-size: 0.95em; }
@@ -1180,7 +1212,7 @@ body > p {
   section > div h2 { font-size: 2em; }
   section > div h3 { font-size: 1.3em; }
 
-  .features-section { padding: 40px 16px; }
+  .features-section { padding: 8px 6px; margin: 6px 0; }
   .features-section h2 { font-size: 1.8em; margin-bottom: 12px; }
   .features-subtitle { font-size: 0.95em; }
   .feature-card { padding: 22px 18px; }
@@ -1208,7 +1240,7 @@ body > p {
   body > p { font-size: 0.9em; margin: 20px 0; padding: 0 12px; }
   
   /* Features section on mobile */
-  .features-section { padding: 26px 12px; margin: 14px 0; }
+  .features-section { padding: 8px 6px; margin: 6px 0; }
   .features-header { margin-bottom: 18px; }
   .features-section h2 { font-size: 1.6em; margin-bottom: 10px; }
   .features-subtitle { font-size: 0.9em; }
