@@ -213,8 +213,8 @@ header p {
 /* ===== TIMELINE SECTION ===== */
 section {
   max-width: 100%;
-  margin: 8px auto 36px;
-  padding: 0 16px;
+  margin: 16px auto 40px;
+  padding: 8px 16px;
   position: relative;
 }
 
@@ -327,13 +327,14 @@ section {
 }
 
 .attendance-tracker {
-  margin: 10px 0 16px;
+  margin: 8px 0;
+  text-align: center;
 }
 
 .attendance-count {
   font-weight: 600;
   color: #0071c5;
-  margin-bottom: 10px;
+  text-align: center;
 }
 
 .goal-message {
@@ -470,35 +471,47 @@ section {
 }
 
 .team-stats {
-  margin-top: 22px;
+  margin-top: 12px;
+  text-align: center;
 }
 
 .team-panel {
+  padding: 16px;
   background: #ffffff;
   border-radius: 12px;
-  padding: 24px;
   box-shadow: 0 4px 12px rgba(0, 113, 197, 0.1);
   border-top: 3px solid #0071c5;
-  margin-bottom: 20px;
-  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 900px;
+  margin-top: 48px;
+  margin-bottom: 48px;
 }
 
 .team-cards {
   display: flex;
+  margin-top: 8px;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: 10px;
+  justify-content: center;
+}
 }
 
 .team-card {
-  flex: 1 1 200px;
+  flex: 0 0 auto;
   background: #f7fbff;
   border: 1px solid #d6e6f7;
   border-radius: 8px;
-  padding: 12px 14px;
+  padding: 20px 28px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 500px;
+  height: auto;
+  gap: 20px;
 }
 
 .team-card.water {
@@ -520,6 +533,10 @@ section {
 .team-count {
   color: #0071c5;
   font-weight: 700;
+  display: inline-block;
+  min-width: 30px;
+  text-align: right;
+}
 }
 
 /* Timeline cards */
@@ -541,7 +558,7 @@ section > div {
 }
 
 section > div:hover {
-  transform: translateY(-12px) scale(1.02);
+  transform: none;
   box-shadow: 
     0 6px 16px rgba(0, 113, 197, 0.15),
     0 12px 24px rgba(0, 113, 197, 0.2),
@@ -559,6 +576,28 @@ section.attendee-section > div:hover {
   border-inline-start-color: transparent;
   border-top-color: transparent;
   transition: none;
+}
+
+section.newsletter-section > div,
+section.newsletter-section > div:hover {
+  transform: none;
+  box-shadow: none;
+  border-inline-start-color: transparent;
+  border-top-color: transparent;
+  transition: none;
+}
+
+section.features-section > div:hover h2,
+section.features-section > div:hover h3,
+section.attendee-section > div:hover h2,
+section.attendee-section > div:hover h3 {
+  transform: none;
+  color: inherit;
+}
+
+section.newsletter-section > div:hover h2 {
+  transform: none;
+  color: inherit;
 }
 
 /* Card text - Year */
@@ -594,7 +633,7 @@ section > div:hover h3 {
 }
 
 /* Card text - Description */
-section:not(.features-section) > div p {
+section:not(.features-section):not(.newsletter-section) > div:not(.flip-card) p {
   font-size: 1em;
   color: #666;
   line-height: 1.8;
@@ -606,7 +645,7 @@ section:not(.features-section) > div p {
 }
 
 /* Show details when card has 'active' class (clicked) */
-section:not(.features-section) > div.active p {
+section:not(.features-section):not(.newsletter-section) > div:not(.flip-card).active p {
   color: #333;
   opacity: 1;
   max-height: 500px;
@@ -619,6 +658,7 @@ section:not(.features-section) > div.active p {
   background: white;
   border-radius: 12px;
   padding: 30px;
+  margin: 8px auto 12px;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 113, 197, 0.1);
   border-inline-start: 6px solid #0071c5; /* Works for both LTR and RTL */
@@ -782,6 +822,10 @@ section[aria-label="Intel Sustainability Timeline"] .flip-card-back p {
   animation: none;
 }
 
+section[aria-labelledby="featureHeadingDuplicate"] {
+  margin-bottom: 48px;
+}
+
 .features-section > div,
 .features-section > div:hover,
 .attendee-section > div,
@@ -793,6 +837,9 @@ section[aria-label="Intel Sustainability Timeline"] .flip-card-back p {
 .attendee-section {
   padding: 8px 6px;
   margin: 6px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .attendee-section .container {
@@ -813,12 +860,35 @@ section[aria-label="Intel Sustainability Timeline"] .flip-card-back p {
   margin-bottom: 12px;
 }
 
-.features-section h2 {
+.features-section h2,
+.features-title {
   font-size: 2em;
   color: #0071c5;
   margin-bottom: 12px;
   font-weight: 700;
   letter-spacing: -0.5px;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 10px;
+  background: repeating-linear-gradient(
+    135deg,
+    #eef6ff,
+    #eef6ff 10px,
+    #ffffff 10px,
+    #ffffff 20px
+  );
+}
+
+#timelineHeading:hover {
+  color: #222;
+}
+
+.timeline-block:hover #timelineHeading {
+  color: #222;
+}
+
+.timeline-block {
+  margin-top: 48px;
 }
 
 .features-subtitle {
@@ -826,10 +896,19 @@ section[aria-label="Intel Sustainability Timeline"] .flip-card-back p {
   color: #666;
   line-height: 1.6;
   margin: 0;
+  text-align: center;
 }
 
 .features-grid {
   margin-top: 0;
+}
+
+.signup-box {
+  background: #f4f9ff;
+  border: 2px solid #d3e6fb;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 6px 16px rgba(0, 113, 197, 0.08);
 }
 
 /* Keep attendee pillars equal height */
@@ -852,9 +931,23 @@ section[aria-label="Intel Sustainability Timeline"] .flip-card-back p {
   box-shadow: 0 4px 12px rgba(0, 113, 197, 0.1);
   transition: none;
   border-top: 3px solid #0071c5;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: repeating-linear-gradient(
+    135deg,
+    #f2f8ff,
+    #f2f8ff 8px,
+    #ffffff 8px,
+    #ffffff 16px
+  );
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.signup-card {
+  background: linear-gradient(135deg, #ffffff 0%, #eef7ff 100%);
+  border: 2px solid #cfe3f8;
 }
 
 .feature-card:hover {
@@ -952,8 +1045,8 @@ section[aria-label="Intel Sustainability Timeline"] .flip-card-back p {
 
 /* ===== NEWSLETTER SECTION ===== */
 .newsletter-section {
-  background: linear-gradient(135deg, #0071c5 0%, #0097d4 100%);
-  color: white;
+  background: linear-gradient(135deg, #f0f4f8 0%, #e8f1f7 100%);
+  color: #333;
   padding: 60px 16px;
   margin-top: 50px;
 }
@@ -973,11 +1066,21 @@ section[aria-label="Intel Sustainability Timeline"] .flip-card-back p {
   margin-bottom: 20px;
   font-weight: 700;
   letter-spacing: -0.5px;
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 10px;
+  background: repeating-linear-gradient(
+    135deg,
+    #eef6ff,
+    #eef6ff 10px,
+    #ffffff 10px,
+    #ffffff 20px
+  );
 }
 
 .newsletter-subtitle {
   font-size: 1.15em;
-  opacity: 0.95;
+  color: #666;
   line-height: 1.8;
   margin: 0;
 }
@@ -1009,7 +1112,7 @@ section[aria-label="Intel Sustainability Timeline"] .flip-card-back p {
   border-radius: 8px;
   font-size: 1em;
   font-family: inherit;
-  transition: all 0.3s ease;
+  transition: none;
   background: #f9f9f9;
 }
 
@@ -1026,7 +1129,7 @@ section[aria-label="Intel Sustainability Timeline"] .flip-card-back p {
   border-color: #0071c5;
   outline: none;
   background: white;
-  box-shadow: 0 0 0 4px rgba(0, 113, 197, 0.1);
+  box-shadow: none;
 }
 
 .subscribe-btn {
@@ -1046,7 +1149,7 @@ section[aria-label="Intel Sustainability Timeline"] .flip-card-back p {
 
 .subscribe-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 113, 197, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 113, 197, 0.3);
 }
 
 .subscribe-btn:active {

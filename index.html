@@ -13,21 +13,21 @@
   <!-- Header / Hero Section -->
   <header>
     <!-- Language Switcher - English on Right -->
-    <button onclick="switchLanguage('en')" class="lang-btn lang-btn-en" aria-label="Select English language">English</button>
+    <button id="langBtnEn" onclick="switchLanguage('en')" class="lang-btn lang-btn-en" aria-label="Select English language">English</button>
     
     <!-- Language Switcher - Arabic on Left -->
-    <button onclick="switchLanguage('ar')" class="lang-btn lang-btn-ar" aria-label="اختر اللغة العربية">عربي</button>
+    <button id="langBtnAr" onclick="switchLanguage('ar')" class="lang-btn lang-btn-ar" aria-label="اختر اللغة العربية">عربي</button>
 
     <div>
       <!-- Ask Copilot to teach you about `.svg`. 🙂 You'll need to resize the logo with CSS. -->
-      <img src="img/intel-header-logo.svg" alt="Intel Logo" />
+      <img id="heroLogo" src="img/intel-header-logo.svg" alt="Intel Logo" />
       <!-- Main Heading -->
-      <h1>
+      <h1 id="heroTitle">
         Sustainability Through the Ages
       </h1>
 
       <!-- Subheading / Description -->
-      <p>
+      <p id="heroSubtitle">
         Explore Intel's journey through time, discovering how our commitment
         to innovation has shaped a more sustainable future for technology 
         and our planet.
@@ -37,45 +37,61 @@
 
   <!-- Sustainability Pillars (Copy) -->
   <section class="features-section attendee-section" aria-labelledby="featureHeadingCopy">
-    <div class="container">
-      <div class="features-header"></div>
-
-      <div class="team-panel">
-        <div class="team-stats">
-          <div class="attendance-tracker" aria-live="polite">
-            <p class="attendance-count">
-              Attendance: <span id="attendeeCount">0</span>/<span id="attendeeGoal">50</span>
-            </p>
-            <div class="progress-container" role="progressbar" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
-              <div id="progressBar" class="progress-bar">0%</div>
-            </div>
+    <div class="team-panel">
+      <div class="team-stats">
+        <div class="attendance-tracker" aria-live="polite">
+          <p class="attendance-count">
+            <span id="attendanceLabel">Attendance</span>: <span id="attendeeCount">0</span>/<span id="attendeeGoal">50</span>
+          </p>
+          <div class="progress-container" role="progressbar" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0">
+            <div id="progressBar" class="progress-bar">0%</div>
           </div>
-          <p id="teamWinMessage" class="team-win-message" aria-live="polite"></p>
-          <p id="goalMessage" class="goal-message" aria-live="polite"></p>
-          <h3>Team Attendance</h3>
-          <div class="team-cards">
-            <div class="team-card water">
-              <span class="team-name">💧 Team Water Wise</span>
-              <span class="team-count" id="waterCount">0</span>
-            </div>
-            <div class="team-card zero">
-              <span class="team-name">🍃 Team Net Zero</span>
-              <span class="team-count" id="zeroCount">0</span>
-            </div>
-            <div class="team-card power">
-              <span class="team-name">⚡ Team Renewables</span>
-              <span class="team-count" id="powerCount">0</span>
-            </div>
+        </div>
+        <p id="teamWinMessage" class="team-win-message" aria-live="polite"></p>
+        <p id="goalMessage" class="goal-message" aria-live="polite"></p>
+        <h3 id="teamAttendanceTitle">Team Attendance</h3>
+        <div class="team-cards">
+          <div class="team-card water">
+            <span class="team-name">💧 Team Water Wise</span>
+            <span class="team-count" id="waterCount">0</span>
+          </div>
+          <div class="team-card zero">
+            <span class="team-name">🍃 Team Net Zero</span>
+            <span class="team-count" id="zeroCount">0</span>
+          </div>
+          <div class="team-card power">
+            <span class="team-name">⚡ Team Renewables</span>
+            <span class="team-count" id="powerCount">0</span>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="row g-4 features-grid">
+  <section class="features-section" aria-labelledby="featureHeadingDuplicate">
+    <div class="container">
+      <div class="features-header">
+        <h2 id="featureHeadingDuplicate">📝 Team Sign Up</h2>
+        <p id="teamSignupSubtitle" class="features-subtitle">Welcome, sign in and chat with your team members!</p>
+      </div>
+      
+      <div class="signup-box">
+        <div class="row g-4 features-grid">
         <!-- Feature 1 -->
         <div class="col-12 col-md-4">
-          <div class="feature-card">
-            <h3>👋 Welcome to Event Sign-Up</h3>
-            <p class="checkin-subtitle">Add your name below to check in and join the team.</p>
+          <div class="feature-card signup-card">
+            <h3 id="attendeeListTitle"><span class="feature-icon" aria-hidden="true">📋</span> Attendee List</h3>
+            <ul id="attendeeList" class="simple-list">
+              <!-- Names will be added here by JavaScript -->
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="col-12 col-md-4">
+          <div class="feature-card signup-card">
+            <h3 id="signupCardTitle"><span class="feature-icon" aria-hidden="true">📝</span> Welcome to Event Sign-Up</h3>
+            <p id="signupSubtitle" class="checkin-subtitle">Add your name below to check in and join the team.</p>
 
             <!-- Personalized greeting message -->
             <p id="greeting" class="greeting-message" aria-live="polite"></p>
@@ -113,21 +129,11 @@
 
           </div>
         </div>
-
-        <!-- Feature 2 -->
-        <div class="col-12 col-md-4">
-          <div class="feature-card">
-            <h3><span class="feature-icon" aria-hidden="true">📋</span> Attendee List</h3>
-            <ul id="attendeeList" class="simple-list">
-              <!-- Names will be added here by JavaScript -->
-            </ul>
-          </div>
-        </div>
-
+        
         <!-- Feature 3 -->
         <div class="col-12 col-md-4">
-          <div class="feature-card">
-            <h3><span class="feature-icon" aria-hidden="true">💬</span> Chat Box</h3>
+          <div class="feature-card signup-card">
+            <h3 id="chatBoxTitle"><span class="feature-icon" aria-hidden="true">💬</span> Chat Box</h3>
             <ul id="chatMessages" class="simple-list">
               <!-- Messages will be added here by JavaScript -->
             </ul>
@@ -138,6 +144,8 @@
             </form>
           </div>
         </div>
+
+        </div>
       </div>
     </div>
   </section>
@@ -147,14 +155,14 @@
     <div class="container">
       <div class="features-header">
         <h2 id="featureHeading">🌱 Our Sustainability Pillars</h2>
-        <p class="features-subtitle">Intel's commitment to environmental responsibility and innovation</p>
+        <p id="pillarsSubtitle" class="features-subtitle">Intel's commitment to environmental responsibility and innovation</p>
       </div>
       
       <div class="row g-4 features-grid">
         <!-- Feature 1 -->
         <div class="col-12 col-md-4">
           <div class="feature-card">
-            <h3><span class="feature-icon" aria-hidden="true">🌍</span> Climate Action</h3>
+            <h3><span class="feature-icon" aria-hidden="true">🌍</span> <span id="pillarOneTitle">Climate Action</span></h3>
             <!-- Accordion (Bootstrap) inside the card -->
             <div class="accordion pillar-accordion" id="pillarOne">
               <div class="accordion-item">
@@ -164,7 +172,7 @@
                   </button>
                 </h4>
                 <div id="pillarOneBody" class="accordion-collapse collapse" aria-labelledby="pillarOneHeading" data-bs-parent="#pillarOne">
-                  <div class="accordion-body">
+                  <div id="pillarOneBodyText" class="accordion-body">
                     Intel is committed to achieving net-zero greenhouse gas emissions across its global operations by 2040. This includes Scope 1 and 2 emissions, and we're investing heavily in renewable energy, chemical abatement technologies, and energy-efficient manufacturing processes to drive meaningful environmental impact.
                   </div>
                 </div>
@@ -176,7 +184,7 @@
         <!-- Feature 2 -->
         <div class="col-12 col-md-4">
           <div class="feature-card">
-            <h3><span class="feature-icon" aria-hidden="true">🤝</span> Responsibility</h3>
+            <h3><span class="feature-icon" aria-hidden="true">🤝</span> <span id="pillarTwoTitle">Responsibility</span></h3>
             <!-- Accordion (Bootstrap) inside the card -->
             <div class="accordion pillar-accordion" id="pillarTwo">
               <div class="accordion-item">
@@ -186,7 +194,7 @@
                   </button>
                 </h4>
                 <div id="pillarTwoBody" class="accordion-collapse collapse" aria-labelledby="pillarTwoHeading" data-bs-parent="#pillarTwo">
-                  <div class="accordion-body">
+                  <div id="pillarTwoBodyText" class="accordion-body">
                     We advance ethical and responsible practices across our entire supply chain and in all communities where we operate. From fair labor standards to community engagement programs, Intel ensures positive social impact while maintaining the highest standards of corporate governance and transparency worldwide.
                   </div>
                 </div>
@@ -198,7 +206,7 @@
         <!-- Feature 3 -->
         <div class="col-12 col-md-4">
           <div class="feature-card">
-            <h3><span class="feature-icon" aria-hidden="true">💡</span> Innovation</h3>
+            <h3><span class="feature-icon" aria-hidden="true">💡</span> <span id="pillarThreeTitle">Innovation</span></h3>
             <!-- Accordion (Bootstrap) inside the card -->
             <div class="accordion pillar-accordion" id="pillarThree">
               <div class="accordion-item">
@@ -208,7 +216,7 @@
                   </button>
                 </h4>
                 <div id="pillarThreeBody" class="accordion-collapse collapse" aria-labelledby="pillarThreeHeading" data-bs-parent="#pillarThree">
-                  <div class="accordion-body">
+                  <div id="pillarThreeBodyText" class="accordion-body">
                     Through cutting-edge technology and strategic partnerships, Intel leads the semiconductor industry toward sustainable solutions. Our advanced manufacturing processes reduce environmental impact while enabling next-generation technologies that power a more sustainable digital future for everyone.
                   </div>
                 </div>
@@ -220,21 +228,25 @@
     </div>
   </section>
 
-  <p class="timeline-hint">Scroll to view timeline | Click on cards to reveal details!</p>
+  <div class="timeline-block">
+    <div class="features-header">
+      <h2 id="timelineHeading" class="features-title">Intel Timeline</h2>
+    </div>
+    <p id="timelineHint" class="timeline-hint features-subtitle">Scroll to view timeline | Click on cards to reveal details!</p>
 
-  <!-- Timeline Cards Section -->
-  <section aria-label="Intel Sustainability Timeline">
+    <!-- Timeline Cards Section -->
+    <section aria-labelledby="timelineHeading">
 
     <!-- Card 1: 1968 -->
     <div class="flip-card">
       <h2>1968</h2>
-      <h3>Intel Founded</h3>
+      <h3 id="timelineTitle1968">Intel Founded</h3>
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="img/1.jpg" alt="Intel Founded 1968">
+          <img id="timelineImg1968" src="img/1.jpg" alt="Intel Founded 1968">
         </div>
         <div class="flip-card-back">
-          <p>
+          <p id="timelineText1968">
             Robert Noyce and Gordon Moore rename the newly formed company 
             NM Electronics to Intel Corporation, laying the foundation for 
             decades of technological innovation.
@@ -246,13 +258,13 @@
     <!-- Card 2: 1971 -->
     <div class="flip-card">
       <h2>1971</h2>
-      <h3>First Microprocessor</h3>
+      <h3 id="timelineTitle1971">First Microprocessor</h3>
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="img/2.jpg" alt="First Microprocessor 1971">
+          <img id="timelineImg1971" src="img/2.jpg" alt="First Microprocessor 1971">
         </div>
         <div class="flip-card-back">
-          <p>
+          <p id="timelineText1971">
             Intel debuts the 4004, the world's first commercial microprocessor, 
             igniting the microprocessor revolution and propelling the future 
             of computing devices.
@@ -264,13 +276,13 @@
     <!-- Card 3: 1978 -->
     <div class="flip-card">
       <h2>1978</h2>
-      <h3>8086 Processor</h3>
+      <h3 id="timelineTitle1978">8086 Processor</h3>
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="img/3.jpg" alt="8086 Processor 1978">
+          <img id="timelineImg1978" src="img/3.jpg" alt="8086 Processor 1978">
         </div>
         <div class="flip-card-back">
-          <p>
+          <p id="timelineText1978">
             Launch of the 8086 processor, establishing the x86 architecture 
             that drives countless PCs and servers in the modern era.
           </p>
@@ -281,13 +293,13 @@
     <!-- Card 4: 1985 -->
     <div class="flip-card">
       <h2>1985</h2>
-      <h3>386 Processor</h3>
+      <h3 id="timelineTitle1985">386 Processor</h3>
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="img/4.jpg" alt="386 Processor 1985">
+          <img id="timelineImg1985" src="img/4.jpg" alt="386 Processor 1985">
         </div>
         <div class="flip-card-back">
-          <p>
+          <p id="timelineText1985">
             Intel introduces the 386 processor with 32-bit architecture, 
             ushering in a new era of performance and multitasking for 
             personal computers.
@@ -299,13 +311,13 @@
     <!-- Card 5: 2006 -->
     <div class="flip-card">
       <h2>2006</h2>
-      <h3>Peak GHG Emissions</h3>
+      <h3 id="timelineTitle2006">Peak GHG Emissions</h3>
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="img/intel-2.avif" alt="Peak GHG Emissions 2006">
+          <img id="timelineImg2006" src="img/intel-2.avif" alt="Peak GHG Emissions 2006">
         </div>
         <div class="flip-card-back">
-          <p>
+          <p id="timelineText2006">
             This year marks Intel's highest annual greenhouse gas emissions 
             for operations. Over subsequent years, Intel invests heavily in 
             chemical abatement, renewable energy, and energy-efficient 
@@ -318,13 +330,13 @@
     <!-- Card 6: 2020 -->
     <div class="flip-card">
       <h2>2020</h2>
-      <h3>RISE Strategy</h3>
+      <h3 id="timelineTitle2020">RISE Strategy</h3>
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="img/intel-3.avif" alt="RISE Strategy 2020">
+          <img id="timelineImg2020" src="img/intel-3.avif" alt="RISE Strategy 2020">
         </div>
         <div class="flip-card-back">
-          <p>
+          <p id="timelineText2020">
             Intel launches its RISE (Responsible, Inclusive, Sustainable, 
             Enabling) strategy and 2030 goals, aiming to drive industry-wide 
             progress on climate action, water stewardship, and waste reduction.
@@ -336,13 +348,13 @@
     <!-- Card 7: 2022 -->
     <div class="flip-card">
       <h2>2022</h2>
-      <h3>Net-Zero By 2040</h3>
+      <h3 id="timelineTitle2022">Net-Zero By 2040</h3>
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="img/intel-4.avif" alt="Net-Zero By 2040 2022">
+          <img id="timelineImg2022" src="img/intel-4.avif" alt="Net-Zero By 2040 2022">
         </div>
         <div class="flip-card-back">
-          <p>
+          <p id="timelineText2022">
             Intel announces its commitment to achieve net-zero greenhouse 
             gas emissions (Scope 1 and 2) across its global operations 
             by 2040, building on years of environmental initiatives.
@@ -354,13 +366,13 @@
     <!-- Card 8: 2023 -->
     <div class="flip-card">
       <h2>2023</h2>
-      <h3>Renewable Electricity</h3>
+      <h3 id="timelineTitle2023">Renewable Electricity</h3>
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="img/intel-5.avif" alt="Renewable Electricity 2023">
+          <img id="timelineImg2023" src="img/intel-5.avif" alt="Renewable Electricity 2023">
         </div>
         <div class="flip-card-back">
-          <p>
+          <p id="timelineText2023">
             The company achieves 99% renewable electricity usage worldwide, 
             helping to drastically lower carbon emissions and driving progress 
             toward Intel's long-term sustainability goals.
@@ -372,13 +384,13 @@
     <!-- Card 9: 2024 -->
     <div class="flip-card">
       <h2>2024</h2>
-      <h3>Sustainability Summit</h3>
+      <h3 id="timelineTitle2024">Sustainability Summit</h3>
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          <img src="img/intel-6.avif" alt="Sustainability Summit 2024">
+          <img id="timelineImg2024" src="img/intel-6.avif" alt="Sustainability Summit 2024">
         </div>
         <div class="flip-card-back">
-          <p>
+          <p id="timelineText2024">
             Intel hosts its first Sustainability Summit, uniting suppliers, 
             government officials, and industry leaders to collaborate on 
             next-generation sustainable semiconductor manufacturing.
@@ -386,14 +398,15 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
+  </div>
 
   <!-- Newsletter Subscription Section -->
   <section class="newsletter-section" aria-labelledby="newsletterHeading">
     <div class="newsletter-container">
       <div class="newsletter-header">
         <h2 id="newsletterHeading">📬 Stay in the Loop</h2>
-        <p class="newsletter-subtitle">Get the latest updates on Intel's sustainability journey and environmental initiatives delivered to your inbox.</p>
+        <p id="newsletterSubtitle" class="newsletter-subtitle">Get the latest updates on Intel's sustainability journey and environmental initiatives delivered to your inbox.</p>
       </div>
       
       <form id="newsletterForm" class="newsletter-form" aria-label="Newsletter subscription form">
@@ -427,7 +440,7 @@
 
   <!-- Simple Footer -->
   <footer class="site-footer">
-    <p>Intel Sustainability Timeline Project | Built for learning</p>
+    <p id="footerText">Intel Sustainability Timeline Project | Built for learning</p>
   </footer>
   
   <!-- Bootstrap JS -->
